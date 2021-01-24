@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <div class="header__logo-box">
+                    <a href="index.html"><img src="images/logo/Reservia.svg" alt="" class="header__logo"></a>
+                    
+                </div>
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#lodging" class="nav__link">Hébergements</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#activity" class="nav__link">Activités</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="register">
+                    <a href="#" class="register__link">S'inscrire</a>
+                </div>
+                <h1 class="heading-primary">
+                    <span class="heading-primary--main">Trouvez votre hébergement pour des vacances de rêve</span>
+                    <span class="heading-primary--sub">En plein centre ville ou pleine nature</span>
+                </h1>
+                <form action="#" class="search">
+                    <!-- map marker icon -->
+                    <div class="search__icon-box icon-box icon-box--gray">
+                        <svg class="icon icon--black">
+                            <use xlink:href="images/icons/sprite.svg#icon-marker-map">
+                        </svg>
+                    </div>
+                    <input type="text" class="search__input" placeholder="Marseille, France">
+                    <button class="btn btn--search">
+                        <span class="search__btn-text">Rechercher</span>
+
+                        <!-- search__btn-icon is hidden for desktop version-->
+                        <span class="search__btn-icon icon-box icon-box--search">
+                            <!-- magnifying glass icon -->
+                            <svg class="icon icon--white">
+                                <use xlink:href="images/icons/sprite.svg#icon-search">
+                            </svg>
+                        </span>
+                    </button>
+                </form>
+            </header>
+        </div>
+    </body>
+</html>
