@@ -1,7 +1,7 @@
 :root{
     --color-blue-dark: #0065FC;
     --color-blue-light: #DEEBFF;
-    --color-gray-light: #F2F2F2;
+    --color-gray-light: #f2f2f2;
 }
 
 html{
@@ -36,6 +36,8 @@ li{
 
 .container{
     width: 134rem;
+    display: grid;
+    grid-row-gap: 5rem;
 }
 
 /*================
@@ -45,11 +47,14 @@ li{
 .header{
     display: grid;
     grid-template-columns: [full-start]1fr minmax(min-content, 34rem) minmax(min-content, 15rem) [full-end];
+    grid-row-gap: 3rem;
     align-items: center;
 }
 
 .header__logo-box{
-    padding: 5rem 0;
+    /* padding: 5rem 0; */
+    padding-top: 5rem;
+    padding-bottom: 2rem;
 }
 
 .nav{
@@ -107,7 +112,6 @@ li{
     font-size: 2rem;
     display: flex;
     flex-direction: column;
-    /* line-height: 4rem; */
 }
 
 .heading-primary--sub{
@@ -119,24 +123,27 @@ li{
 .search{
     grid-column: full-start / full-end;
     display: flex;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
 }
 
 .search__input{
     border: solid 2px var(--color-gray-light);
     width: 21rem;
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: 700;
+    padding-left: 1.5rem;
 }
 
 .search__input::placeholder{
     color: #000;
-    font-weight: 700;
-    padding-left: 2rem;
 }
 
 .search__btn-text{
     padding: 0 2rem;
 }
 
+/* magnifying glass icon */
 .search__btn-icon.icon-box{
     display: none;
 }
@@ -144,6 +151,70 @@ li{
 /*===============
     HEADER END
 ===============*/
+
+/*=========================
+    LODGING SECTION START
+=========================*/
+
+.lodging{
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: repeat(2,1fr) minmax(35rem, 1fr);
+    grid-gap: 4rem;
+}
+
+.lodging__filters{
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center; 
+    flex-wrap: wrap;
+}
+
+.lodging__filters > * {
+    margin-bottom: 1.5rem;
+}
+
+.filter:link, .filter:visited{
+    border: solid 2px #d9d9d9;
+    border-radius: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    margin-left: 2.5rem;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.filter:hover{
+    transform:translateY(-3px);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);;
+    transition: all .2s;
+}
+
+.filter:active{
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);;
+    transition: all .2s;
+}
+
+.filter__text{
+    padding: 0 1.4rem;
+}
+
+.lodging__info{
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+/*========================
+    LODGING SECTION END
+========================*/
+
+/*==================
+    BUTTON START
+==================*/
 
 .btn{
     outline: none;
@@ -161,6 +232,10 @@ li{
 }
 
 /*===============
+    BUTTON END
+===============*/
+
+/*===============
     ICON START
 ===============*/
 
@@ -172,13 +247,39 @@ li{
     justify-content: center;
 }
 
+/* map marker icon */
 .icon-box--gray{
     background-color: var(--color-gray-light);
     border-radius: 1.5rem 0 0 1.5rem;
 }
-.icon{
+/* info icon - lodging section */
+.icon-box--info{
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 1rem;
+    border: solid 1px #d9d9d9;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-box--blue-light{
+    background-color: var(--color-blue-light);
+    border-radius: 100%;
+    transform: translateX(-3px);
+}
+
+
+.icon--20{
     height: 2rem;
     width: 2rem;
+}
+
+/* info icon & star icon - lodging section */
+.icon--15{
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 .icon--black{
@@ -187,6 +288,14 @@ li{
 
 .icon--white{
     fill: #fff;
+}
+
+.icon--blue-dark{
+    fill: var(--color-blue-dark);
+}
+
+.icon--gray{
+    fill: var(--color-gray-light)
 }
 
 /*===============
@@ -226,21 +335,26 @@ li{
     }
 }
 
+/* mobile device */
 @media only screen and (max-width: 600px){
     .container{
         padding: 0;
     }
 
+    /*================
+        HEADER START
+    ================*/
+
     .header{
         grid-template-columns: 2rem [full-start] 1fr repeat(2, min-content) [full-end] 2rem;
         align-items: start;
-        height: 50vh;
     }
 
     .header__logo-box{
         grid-column: full-start / 3;
         align-self: center;
-        padding: 0;
+        padding-top: 3rem;
+        padding-bottom: 0;
     }
 
     .nav{
@@ -256,8 +370,7 @@ li{
         margin: 0;
         height: 4rem;
     }
-
-
+    
     .nav__link::before{
         top: 100%;
         height: 3px;
@@ -297,4 +410,21 @@ li{
         border-radius: 1.5rem;
         transform: translateX(-1rem);
     }
+
+    /*================
+        HEADER END
+    ================*/
+    /*=========================
+        LODGING SECTION START
+    =========================*/
+    .heading-tertiary--filter{
+        width: 100%;
+    }
+
+    .lodging__info{
+        font-size: 2rem;
+    }
+    /*=========================
+        LODGING SECTION END
+    =========================*/
 }
