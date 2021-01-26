@@ -155,6 +155,25 @@ li{
     LODGING SECTION START
 =========================*/
 
+.heading-secondary{
+    grid-column: 1 / -1;
+    font-size: 2.5rem;
+}
+
+.heading-secondary--available{
+    grid-column: 1 / -1;
+}
+
+.heading-secondary--popular{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading-secondary--popular span{
+    margin-right: 1rem;
+}
+
 /*Parent*/
 .lodging{
     font-weight: 700;
@@ -209,25 +228,6 @@ li{
     font-weight: 400;
 }
 
-.heading__secondary{
-    font-size: 2.1rem;
-    grid-column: 1 / -1;
-}
-
-.heading__secondary--available{
-    grid-column: 1 / -1;
-}
-
-.heading__secondary--popular{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.heading__secondary--popular span{
-    margin-right: 1rem;
-}
-
 .lodging__available,
 .lodging__popular{
     background-color: var(--color-gray-light);
@@ -268,18 +268,26 @@ li{
     CARD START
 ==================*/
 
+.card-link:link,
+.card-link:visited{
+    transition: all .2s;
+}
+
+.card-link:hover{
+    transform: scale(1.05) translateY(-3px);
+    transition: all .2s;
+}
+
+.card-link:active{
+    transform: translateY(-1px);
+    transition: all .2s;
+}
+
 .card{
     background-color: #fff;
     border-radius: 2rem;
     display: grid;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: repeat(4, 3.5rem) min-content;
     box-shadow: 2px 2px 2rem rgba(163, 163, 163, 0.9);
-}
-
-.card__img-box{
-    grid-column: 1/-1;
-    grid-row: 1/4;
 }
 
 .card__img{
@@ -291,15 +299,13 @@ li{
 }
 
 .card__body{
-    grid-column: 1/-1;
-    grid-row: 4/-1;
-    font-size: 1.3rem;
-    padding: 1rem 1.5rem;
+    font-size: 1.4rem;
     line-height: 2.5rem;
+    padding: 1rem 1.5rem;
 }
 
 .card__text{
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .card__price{
@@ -315,7 +321,31 @@ li{
     margin-right: 2px;
 }
 
+/* AVAILABLE */
+
+.card--available{
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(4, 4rem) min-content;
+}
+
+.card__img-box--available{
+    grid-column: 1/-1;
+    grid-row: 1/4;
+}
+
+.card__body--available{
+    grid-column: 1/-1;
+    grid-row: 4/-1;
+}
+
+
 /*  MOREST POPULAR */
+
+.card--popular{
+     grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(5, 3rem);
+}
+
 .card__img-box--popular{
     grid-column: 1/3;
     grid-row: 1/-1;
@@ -462,12 +492,37 @@ li{
     .container{
         width: 100%;
         padding: 0 3rem;
-    }
+    }    
+}
 
+@media only screen and (min-width:740px) and (max-width: 1100px){
     .card--available{
         grid-template-rows: repeat(4, 5rem) min-content;
     }
-    
+
+    .card--popular{
+        grid-template-columns: repeat(5,1fr);
+        grid-template-rows: repeat(4, 5rem) min-content;
+    }
+
+    .card__img-box--popular{
+        grid-column: 1/-1;
+        grid-row: 1/4;
+
+    }
+
+    .card__img--popular{
+        border-radius: 2rem 2rem 0 0;
+    }
+
+    .card__body--popular{
+        grid-column: 1/-1;
+        grid-row: 4/-1;
+    }
+
+    .card__body--popular .card__rating{
+        position: initial;
+    }
 }
 
 @media only screen and (max-width: 950px){
@@ -475,28 +530,38 @@ li{
     .lodging__popular{
         grid-row: 3 / 4;
         grid-column: 1 / -1;
-        grid-template-columns: repeat(7,1fr);
+        grid-gap: 3rem ;
     }
 
-    .lodging__popular .lodging__link{
-        grid-column: 2/7;
+    .lodging__popular .card-link{
+        /* grid-column: 2/7; */
+        height: 100%;
         grid-template-rows: repeat(5, 3rem);
     }
     
-
     .lodging__available{
         grid-column: 1 / -1;
     }
 
-    .heading__secondary--popular{
+    .heading-secondary--popular{
         justify-content: flex-start;
     }
-    .heading__secondary--popular span{
+    .heading-secondary--popular span{
         margin-right: 2rem;
+    }
+
+    .card--popular{
+        height: 100%;
     }
 }
 
 /* mobile device */
+@media only screen and (max-width: 740px){
+    .lodging__popular .card-link{
+        grid-column: 1 / -1;
+    }
+}
+
 @media only screen and (max-width: 600px){
     .container{
         padding: 0;
@@ -587,7 +652,7 @@ li{
         padding: 2rem;
     }
 
-    .heading__secondary--popular{
+    .heading-secondary--popular{
         justify-content: space-between;
     }
 
@@ -603,8 +668,7 @@ li{
         font-size: 2rem;
     }
 
-    .lodging__link,
-    .lodging__popular .lodging__link{
+    .card-link{
         grid-column: 1/-1;
     }
 
