@@ -21,8 +21,6 @@ html{
 body{
     font-family: 'Raleway', sans-serif;
     font-size: 1.6rem;
-    display: flex;
-    justify-content: center;
 }
 
 a{
@@ -35,8 +33,8 @@ li{
 }
 
 .container{
-    width: 134rem;
     display: grid;
+    grid-template-columns: 1fr 132rem 1fr;
     grid-row-gap: 5rem;
 }
 
@@ -45,6 +43,8 @@ li{
 ================*/
 
 .header{
+    grid-column: 2/3;
+
     display: grid;
     grid-template-columns: [full-start]1fr minmax(min-content, 34rem) minmax(min-content, 15rem) [full-end];
     grid-row-gap: 3rem;
@@ -176,6 +176,8 @@ li{
 
 /*Parent*/
 .lodging{
+    grid-column: 2/3;
+    grid-row: 2/3;
     font-weight: 700;
     display: grid;
     grid-template-columns: repeat(2,1fr) minmax(38rem, 1fr);
@@ -253,11 +255,13 @@ li{
 /*========================
     LODGING SECTION END
 ========================*/
-/*==========================
-    ACTIVITIES SECTION END
-==========================*/
+/*=============================
+    ACTIVITIES SECTION START
+==============================*/
 
 .activities{
+    grid-column: 2/3;
+    grid-row: 3/4;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(26rem,1fr));;
     grid-column-gap: 3rem;
@@ -270,6 +274,40 @@ li{
 /*==========================
     ACTIVITIES SECTION END
 ==========================*/
+
+/*=================
+    FOOTER START
+=================*/
+
+.footer{
+    grid-column: 1 / -1;
+    background-color: var(--color-gray-light);
+    display: grid;
+    grid-template-columns: 1fr minmax(min-content,132rem) 1fr;
+    /* height: 20rem; */
+    padding: 4rem 0;
+    align-items: center;
+}
+
+.footer__nav{
+    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+    grid-row-gap: 4rem;
+}
+
+.footer__list{
+    margin-top: 1.5rem;
+}
+
+.footer__link{
+    font-size: 1.5rem;
+    line-height: 3rem;
+}
+
+/*================
+    FOOTER END
+=================*/
 
 /*==================
     CARD START
@@ -490,6 +528,10 @@ li{
         font-size: 1.5rem;
         line-height: 3rem;
     }
+
+    .footer__link{
+        font-size: 1.9rem;
+    }
 }
 
 /* LAYOUT OF ACTIVITIES IN DESKTOP FORMAT*/
@@ -540,12 +582,23 @@ li{
     }
 }
 
+
+
 /* medium device */
 @media only screen and (max-width: 1100px){
     .container{
-        width: 100%;
+        grid-template-columns: 1fr 100% 1fr;
+    } 
+
+    .footer{
+        padding-left: 3rem;
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width: 1100px){
+    .container > *:not(:last-child){
         padding: 0 3rem;
-    }    
+    }
 }
 
 @media only screen and (min-width:740px) and (max-width: 1100px){
@@ -694,6 +747,10 @@ li{
     /*=========================
         LODGING SECTION START
     =========================*/
+    .lodging{
+        grid-gap: 0;
+    }
+
     .heading-tertiary--filter{
         width: 100%;
     }
@@ -732,4 +789,5 @@ li{
     .card__body{
         font-size: 1.8rem;
     }
+
 }
