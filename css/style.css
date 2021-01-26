@@ -129,7 +129,7 @@ li{
     border: solid 2px var(--color-gray-light);
     width: 21rem;
     font-family: inherit;
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 700;
     padding-left: 1.5rem;
 }
@@ -224,7 +224,7 @@ li{
     grid-column: 1 / -1;
     display: flex;
     align-items: center;
-    font-size: 1.7rem;
+    font-size: 1.45rem;
     font-weight: 400;
 }
 
@@ -243,26 +243,33 @@ li{
     grid-gap: 3rem;
 }
 
+
 .lodging__popular{
     border-radius: 2rem;
-    grid-template-rows: repeat(3, min-content);
     grid-row-gap: 3rem;
     justify-content: center;
     align-self: start;
 }
-
-.lodging__link:link,
-.lodging__link:visited{
-    transition: all .2s;    
-}
-
-.lodging__link:hover{
-    transform:scale(1.03) translateY(-1rem);
-    transition: all .2s;
-}
 /*========================
     LODGING SECTION END
 ========================*/
+/*==========================
+    ACTIVITIES SECTION END
+==========================*/
+
+.activities{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(26rem,1fr));;
+    grid-column-gap: 3rem;
+}
+
+.activities .heading-secondary{
+    padding-bottom: 3rem;
+}
+
+/*==========================
+    ACTIVITIES SECTION END
+==========================*/
 
 /*==================
     CARD START
@@ -287,7 +294,14 @@ li{
     background-color: #fff;
     border-radius: 2rem;
     display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(4, 3rem) min-content;
     box-shadow: 2px 2px 2rem rgba(163, 163, 163, 0.9);
+}
+
+.card__img-box{
+    grid-column: 1/-1;
+    grid-row: 1/5;
 }
 
 .card__img{
@@ -299,9 +313,11 @@ li{
 }
 
 .card__body{
+    grid-column: 1/-1;
+    grid-row: 5/6;
     font-size: 1.4rem;
     line-height: 2.5rem;
-    padding: 1rem 1.5rem;
+    padding: .5rem 1.5rem;
 }
 
 .card__text{
@@ -320,29 +336,9 @@ li{
 .card__rating .icon{
     margin-right: 2px;
 }
-
-/* AVAILABLE */
-
-.card--available{
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: repeat(4, 4rem) min-content;
-}
-
-.card__img-box--available{
-    grid-column: 1/-1;
-    grid-row: 1/4;
-}
-
-.card__body--available{
-    grid-column: 1/-1;
-    grid-row: 4/-1;
-}
-
-
-/*  MOREST POPULAR */
-
+/*  CARD MOREST POPULAR */
 .card--popular{
-     grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(5, 3rem);
 }
 
@@ -364,6 +360,15 @@ li{
 .card__body--popular .card__rating{
     position: absolute;
     bottom: 1rem;
+}
+
+.card__img-box--activity .card__img{
+    padding: 0;
+}
+
+.card--activity .card__body{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 /*==================
     CARD END
@@ -482,8 +487,56 @@ li{
     }
 
     .card__body{
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         line-height: 3rem;
+    }
+}
+
+/* LAYOUT OF ACTIVITIES IN DESKTOP FORMAT*/
+@media only screen and (min-width: 950px){
+    .activities{
+        display: grid;
+        grid-template-rows: min-content 18rem repeat(2, 4rem) 18rem;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 3rem;
+    }
+
+    .card__img-box--activity{
+        grid-row: 1 / 2;
+    }
+
+    .card-link--vieux-port{
+        grid-row: 2/span 4;
+    }
+
+    .card-link--fort-pomegues{
+        grid-column: 2 / 3;
+        grid-row: 2 / 4;
+    }
+
+    .card-link--iles-frioul{
+        grid-column: 2/3;
+        grid-row: 5 / 6;
+    }
+
+    .card-link--parc-calanques{
+        grid-column: 3/4;
+        grid-row: 2 / span 4;
+    }
+
+    .card-link--notre-dame{
+        grid-column: 4/-1;
+        grid-row: 2 / 3;
+    }
+
+    .card-link--parc-longchamp{
+        grid-column: 4/-1;
+        grid-row: 4 / span 2;
+    }
+
+    .card--activity{
+        height: 100%;
+        grid-template-rows: minmax(13rem, 1fr) min-content;
     }
 }
 
@@ -496,10 +549,7 @@ li{
 }
 
 @media only screen and (min-width:740px) and (max-width: 1100px){
-    .card--available{
-        grid-template-rows: repeat(4, 5rem) min-content;
-    }
-
+    
     .card--popular{
         grid-template-columns: repeat(5,1fr);
         grid-template-rows: repeat(4, 5rem) min-content;
@@ -508,7 +558,6 @@ li{
     .card__img-box--popular{
         grid-column: 1/-1;
         grid-row: 1/4;
-
     }
 
     .card__img--popular{
@@ -527,25 +576,20 @@ li{
 
 @media only screen and (max-width: 950px){
 
+    .lodging__available{
+        grid-column: 1 / -1;
+    }
+
     .lodging__popular{
         grid-row: 3 / 4;
         grid-column: 1 / -1;
         grid-gap: 3rem ;
     }
 
-    .lodging__popular .card-link{
-        /* grid-column: 2/7; */
-        height: 100%;
-        grid-template-rows: repeat(5, 3rem);
-    }
-    
-    .lodging__available{
-        grid-column: 1 / -1;
-    }
-
     .heading-secondary--popular{
         justify-content: flex-start;
     }
+
     .heading-secondary--popular span{
         margin-right: 2rem;
     }
@@ -553,10 +597,17 @@ li{
     .card--popular{
         height: 100%;
     }
+
+    .activities{
+        grid-row-gap: 3rem;
+        padding: 0 4rem;
+    }
+    
+    
 }
 
 /* mobile device */
-@media only screen and (max-width: 740px){
+@media only screen and (max-width: 760px){
     .lodging__popular .card-link{
         grid-column: 1 / -1;
     }
@@ -668,6 +719,12 @@ li{
         font-size: 2rem;
     }
 
+    /*=========================
+        LODGING SECTION END
+    =========================*/
+    /*=========
+        CARD
+    =========*/
     .card-link{
         grid-column: 1/-1;
     }
@@ -675,8 +732,4 @@ li{
     .card__body{
         font-size: 1.8rem;
     }
-    
-    /*=========================
-        LODGING SECTION END
-    =========================*/
 }
