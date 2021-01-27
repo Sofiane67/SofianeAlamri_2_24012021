@@ -32,6 +32,13 @@ li{
     list-style: none;
 }
 
+button{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 .container{
     display: grid;
     grid-template-columns: 1fr 132rem 1fr;
@@ -44,17 +51,11 @@ li{
 
 .header{
     grid-column: 2/3;
-
+    padding-top: 5rem;
     display: grid;
     grid-template-columns: [full-start]1fr minmax(min-content, 34rem) minmax(min-content, 15rem) [full-end];
     grid-row-gap: 3rem;
     align-items: center;
-}
-
-.header__logo-box{
-    /* padding: 5rem 0; */
-    padding-top: 5rem;
-    padding-bottom: 2rem;
 }
 
 .nav{
@@ -195,7 +196,9 @@ li{
     margin-bottom: 1.5rem;
 }
 
-.filter:link, .filter:visited{
+.filter{
+    font-size: inherit;
+    font-weight: 600;
     border: solid 2px #d9d9d9;
     border-radius: 5rem;
     height: 5rem;
@@ -265,10 +268,6 @@ li{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(26rem,1fr));;
     grid-column-gap: 3rem;
-}
-
-.activities .heading-secondary{
-    padding-bottom: 3rem;
 }
 
 /*==========================
@@ -416,12 +415,6 @@ li{
     BUTTON START
 ==================*/
 
-.btn{
-    outline: none;
-    border: none;
-    cursor: pointer;
-}
-
 .btn--search{
     font-size: inherit;
     font-weight: 600;
@@ -506,6 +499,25 @@ li{
 =================*/
 
 /* large device */
+
+@media only screen and (min-width: 1800px){
+    html{
+        font-size: 80%;
+    }
+    body{
+        font-size: 2rem;
+    }
+
+    .header__logo{
+        height: 6.5rem;
+    }
+
+    .lodging__info,
+    .footer__link{
+        font-size: 1.8rem;
+    }
+}
+
 @media only screen and (max-width: 1340px){
     html{
         /* 8 / 16 = 0.5 => defined 1rem = 8px */
@@ -541,6 +553,10 @@ li{
         grid-template-rows: min-content 18rem repeat(2, 4rem) 18rem;
         grid-template-columns: repeat(4, 1fr);
         grid-column-gap: 3rem;
+    }
+
+    .activities .heading-secondary{
+        padding-bottom: 3rem;
     }
 
     .card__img-box--activity{
